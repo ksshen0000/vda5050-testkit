@@ -1,0 +1,14 @@
+<configuration>
+    <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.err</target>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- The official schemas use annotation keywords (unit, subtopic) the validator does not know -->
+    <logger name="com.networknt.schema" level="ERROR"/>
+    <logger name="com.hivemq" level="WARN"/>
+    <root level="${LOG_LEVEL:-WARN}">
+        <appender-ref ref="STDERR"/>
+    </root>
+</configuration>

@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      # Unit tests plus the Mosquitto integration tests (Testcontainers; Docker is available on the runner)
+      - name: Build and test
+        run: ./mvnw -B -ntp -fae verify
+      - name: Demo
+        run: java -jar vda5050-testkit-cli/target/vda5050-testkit.jar demo
+      - name: Test reports
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-reports
+          path: '**/target/surefire-reports/'
+      - uses: actions/upload-artifact@v5
+        with:
+          name: vda5050-testkit-jar
+          path: vda5050-testkit-cli/target/vda5050-testkit.jar

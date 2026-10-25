@@ -1,0 +1,15 @@
+vda5050-testkit
+Copyright 2026 Kexuan Shen and contributors
+
+This product is licensed under the Apache License, Version 2.0.
+
+It bundles the VDA 5050 JSON schemas 2.0.0, 2.1.0 and 3.0.0 from
+https://github.com/VDA5050/VDA5050, Copyright Verband der Automobilindustrie, under the MIT license
+(see vda5050-conformance/src/main/resources/io/github/ksshen0000/vda5050/conformance/schemas/*/LICENSE.txt).
+Corrections to them are listed in docs/schema-patches.md.
+
+The protocol library and the simulator started as modules of Fleetloom
+(https://github.com/ksshen0000/Fleetloom, Apache-2.0).
+
+VDA 5050 is a recommendation of the Verband der Automobilindustrie (VDA) and VDMA. This project is not
+affiliated with or endorsed by them, and passing its checks is not a certification.
